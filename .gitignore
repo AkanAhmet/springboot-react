@@ -1,0 +1,6 @@
+.idea
+*.iws
+*.iml
+*.ipr
+Backend/target
+react-hooks-jwt-auth/node_modules/
