@@ -14,6 +14,6 @@ Prerequirements :
  - Redis Commander -> https://github.com/joeferner/redis-commander
  
 NOTE : 
- - If you re-run backend on Intellij Idea it will warn you about custom Sql quaries in (resources/data.sql) but don't worry it's not an obstacle to work. Database and Schema will created automatically so you dont have to do it yourself.
+ - If you re-run backend on Intellij Idea it will warn you about custom Sql quaries in (resources/data.sql) but don't worry it's not an obstacle to work. Database and Table will created automatically so you dont have to do it yourself.
  
   
