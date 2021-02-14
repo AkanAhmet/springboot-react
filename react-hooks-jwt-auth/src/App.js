@@ -48,7 +48,7 @@ const App = () => {
             {showModeratorBoard && (
               <li className="nav-item">
                 <Link to={"/mod"} className="nav-link">
-                  Sayın Moderator
+                  Moderator
                 </Link>
               </li>
             )}
@@ -56,7 +56,7 @@ const App = () => {
             {showAdminBoard && (
               <li className="nav-item">
                 <Link to={"/admin"} className="nav-link">
-                  Sayın Admin
+                  Admin
                 </Link>
               </li>
             )}
@@ -64,7 +64,7 @@ const App = () => {
             {currentUser && (
               <li className="nav-item">
                 <Link to={"/user"} className="nav-link">
-                   Kullanıcı
+                   Profil
                 </Link>
               </li>
             )}
