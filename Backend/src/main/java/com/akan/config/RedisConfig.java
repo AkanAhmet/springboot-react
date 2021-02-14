@@ -1,6 +1,7 @@
-package com.akan.controller;
+package com.akan.config;
 
 import com.akan.model.User;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
@@ -48,9 +49,10 @@ public class RedisConfig  extends CachingConfigurerSupport {
     }
 
     @Bean
-    public RedisTemplate<Long, User> redisTemplate() {
+    public RedisTemplate redisTemplate() {
         RedisTemplate template = new RedisTemplate<>();
         template.setConnectionFactory(jedisConnectionFactory());
         return template;
     }
+
 }

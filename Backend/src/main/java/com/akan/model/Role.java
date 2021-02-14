@@ -8,8 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.NaturalId;
 
+@Data
+@NoArgsConstructor
 @Entity
 public class Role {
 
@@ -22,24 +26,24 @@ public class Role {
 	@Column(length = 60)
 	private ERole name;
 
-	public Role() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public ERole getName() {
-		return name;
-	}
-
-	public void setName(ERole name) {
-		this.name = name;
-	}
+//	public Role() {
+//		// TODO Auto-generated constructor stub
+//	}
+//
+//	public Long getId() {
+//		return id;
+//	}
+//
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
+//
+//	public ERole getName() {
+//		return name;
+//	}
+//
+//	public void setName(ERole name) {
+//		this.name = name;
+//	}
 
 }

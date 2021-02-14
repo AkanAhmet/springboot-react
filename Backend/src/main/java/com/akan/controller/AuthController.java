@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.akan.config.RedisConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.http.ResponseEntity;
@@ -39,8 +39,7 @@ import com.akan.security.UserDetailsImpl;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-	private RedisConfig redisTemplate;
-	private HashOperations hashOperations; //to access Redis cache
+
 
 	@Autowired
 	UserRepository userRepository;
@@ -57,7 +56,7 @@ public class AuthController {
 	@Autowired
 	PasswordEncoder encoder;
 
-	//@CachePut(cacheNames = "signin", key = "'signin#' + #movie.id")
+	//@Cacheable(cacheNames = "signin",key="#p0")
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 		Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -70,7 +69,7 @@ public class AuthController {
 		
 		return ResponseEntity.ok(new JwtResponse(userDetails.getId(), jwtToken, userDetails.getUsername(), userDetails.getEmail(), roles));
 	}
-
+	//@Cacheable(cacheNames = "signup", key="#p0") => DefaultSerializer requires a Serializable payload but received an object of type [org.springframework.http.ResponseEntity]
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {

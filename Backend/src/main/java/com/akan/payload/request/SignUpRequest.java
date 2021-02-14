@@ -54,13 +54,4 @@ public class SignUpRequest implements Serializable {
 		this.role = role;
 	}
 
-	@Override
-	public String toString() {
-		return "SignUpRequest{" +
-				"username='" + username + '\'' +
-				", email='" + email + '\'' +
-				", password='" + password + '\'' +
-				", role=" + role +
-				'}';
-	}
 }
