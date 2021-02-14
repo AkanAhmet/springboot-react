@@ -1,8 +1,9 @@
 package com.akan.payload.request;
 
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
-public class LoginRequest {
+public class LoginRequest implements Serializable {
 
 	@NotBlank
 	private String username;
@@ -26,4 +27,11 @@ public class LoginRequest {
 		this.password = password;
 	}
 
+	@Override
+	public String toString() {
+		return "LoginRequest{" +
+				"username='" + username + '\'' +
+				", password='" + password + '\'' +
+				'}';
+	}
 }

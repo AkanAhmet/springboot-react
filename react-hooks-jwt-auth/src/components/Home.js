@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-
 import UserService from "../services/user.service";
 
-const Home = () => {
-  const [content, setContent] = useState("");
+ const Home = () => {
 
+  const [content, setContent] = useState("");
   useEffect(() => {
     UserService.getPublicContent().then(
       (response) => {
@@ -21,10 +20,15 @@ const Home = () => {
     );
   }, []);
 
+  const [showResults, setShowResults] = React.useState(false)
+  function toggle() {
+    setShowResults(wasOpened => !wasOpened);
+  }
+
   return (
-    <div className="container">
+    <div className="container" onClick={toggle}>
       <header className="jumbotron">
-        <h3>{content}</h3>
+      { showResults ? <h3>{content}</h3> : "Anasayfa içeriğini okumak veya gizlemek için Buraya tıkla !" }
       </header>
     </div>
   );

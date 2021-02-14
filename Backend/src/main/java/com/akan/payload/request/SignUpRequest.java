@@ -1,11 +1,12 @@
 package com.akan.payload.request;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class SignUpRequest {
+public class SignUpRequest implements Serializable {
 
 	@NotBlank
 	@Size(min = 3, max = 20)
@@ -53,4 +54,13 @@ public class SignUpRequest {
 		this.role = role;
 	}
 
+	@Override
+	public String toString() {
+		return "SignUpRequest{" +
+				"username='" + username + '\'' +
+				", email='" + email + '\'' +
+				", password='" + password + '\'' +
+				", role=" + role +
+				'}';
+	}
 }

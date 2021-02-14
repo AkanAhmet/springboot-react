@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.HashOperations;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -36,6 +39,8 @@ import com.akan.security.UserDetailsImpl;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+	private RedisConfig redisTemplate;
+	private HashOperations hashOperations; //to access Redis cache
 
 	@Autowired
 	UserRepository userRepository;
@@ -52,6 +57,7 @@ public class AuthController {
 	@Autowired
 	PasswordEncoder encoder;
 
+	//@CachePut(cacheNames = "signin", key = "'signin#' + #movie.id")
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 		Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
